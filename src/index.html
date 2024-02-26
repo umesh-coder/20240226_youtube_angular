@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>YoutubeClone</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/fWPKsQp3/youtube.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.min.css">
+</head>
+
+<body>
+  <app-root></app-root>
+</body>
+
+<script>
+  // Define your API key
+  const apiKey = 'AIzaSyDTvxGC3jnETPMEmfsR230sFllXotmKpr8';
+
+  // Fetch videos from YouTube Data API
+  fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&part=snippet&maxResults=12&type=video`)
+    .then(response => response.json())
+    .then(data => {
+      const videos = data.items;
+      const videoContainer = document.getElementById('videos');
+
+      videos.forEach(video => {
+        const title = video.snippet.title;
+        const videoId = video.id.videoId;
+        const thumbnailUrl = video.snippet.thumbnails.medium.url;
+        const publishedAt = new Date(video.snippet.publishedAt).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+
+        // Fetch statistics for each video
+        fetch(`https://www.googleapis.com/youtube/v3/videos?key=${apiKey}&part=statistics&id=${videoId}`)
+          .then(response => response.json())
+          .then(statsData => {
+            const statistics = statsData.items[0].statistics;
+            const views = statistics.viewCount;
+            const likes = statistics.likeCount;
+            const comments = statistics.commentCount;
+
+            const videoElement = document.createElement('div');
+            videoElement.classList.add('video');
+            videoElement.innerHTML = `
+                                                    <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank">
+                                                        <img src="${thumbnailUrl}" alt="${title}">
+                                                        <h2>${title}</h2>
+                                                    </a>
+                                                    <p>Published: ${publishedAt}</p>
+                                                    <p>Views: ${views}</p>
+                                                    <p>Likes: ${likes}</p>
+                                                    <p>Comments: ${comments}</p>
+                                                `;
+            videoContainer.appendChild(videoElement);
+          })
+          .catch(error => console.error('Error fetching video statistics:', error));
+      });
+    })
+    .catch(error => console.error('Error fetching videos:', error));
+</script>
+
+</html>

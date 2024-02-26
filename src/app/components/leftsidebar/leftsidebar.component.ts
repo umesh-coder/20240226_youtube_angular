@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-leftsidebar',
@@ -7,11 +8,6 @@ import { Component } from '@angular/core';
 })
 export class LeftsidebarComponent {
 
-  isSidebarVisible = false;
-
-  toggleSidebar() {
-    this.isSidebarVisible = !this.isSidebarVisible;
-  }
 
 
 }

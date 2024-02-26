@@ -1,0 +1,18 @@
+<div class="video_box">
+
+    <!-- test  -->
+    <div class="row" *ngFor="let video of videos">
+        <div class="thumbnail-card">
+            <img [src]="video.img_src">
+            <div class="card-content">
+                <h2>{{ video.title }}</h2>
+                <p class="channel">{{ video.channel }}</p>
+                <div class="metadata">
+                    <div class="views">{{ video.views }}</div>
+                    <div class="date">{{ video.date }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

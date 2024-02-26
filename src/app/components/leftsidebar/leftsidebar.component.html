@@ -1,9 +1,11 @@
 <div class="maisidebar">
+
     <div class="sidebar">
         <div class="l1">
             <a class="sb-items"><i class="ri-home-5-fill"></i> Home</a>
             <a class="sb-items"><i class="ri-folder-video-line"></i> Shorts</a>
-            <a class="sb-items"><i class="ri-team-line"></i> Subscriptions</a>
+            <a class="sb-items" [routerLink]="['/subscriptions']" routerLinkActive="active"><i class="ri-team-line"></i>
+                Subscriptions</a>
             <hr>
             <a class="sb-items"><i class="ri-user-line"></i> You</a>
             <a class="sb-items"><i class="ri-chat-history-line"></i> History</a>
@@ -68,17 +70,13 @@
         <!-- SidebarENd-->
 
 
-        <div class="video_box">
 
-            <div id="videos" class="videos-container"></div>
 
-        </div>
+        <app-videos></app-videos>
+
+
 
 
     </div>
-
-
-
-
 
 </div>

@@ -7,4 +7,18 @@ import { Component } from '@angular/core';
 })
 export class SettingsComponent {
 
+  sidebarLinks = [
+    'Account',
+    'Notifications',
+    'Playback and performance',
+    'Downloads',
+    'Privacy',
+    'Connected apps',
+    'Purchases and memberships',
+    'Bills and payments',
+    'Advanced settings'
+  ];
+
+  mail="umeshshelare567@gmail.com"
+
 }

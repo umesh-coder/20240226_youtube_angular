@@ -2,10 +2,11 @@
 
     <div class="sidebar">
         <div class="l1">
-            <a class="sb-items"><i class="ri-home-5-fill"></i> Home</a>
+            <a class="sb-items" [routerLink]="['/home']" routerLinkActive="active"><i
+                    class="ri-home-5-fill"></i>Home</a>
             <a class="sb-items"><i class="ri-folder-video-line"></i> Shorts</a>
-            <a class="sb-items" [routerLink]="['/subscriptions']" routerLinkActive="active"><i class="ri-team-line"></i>
-                Subscriptions</a>
+            <a class="sb-items" [routerLink]="['/subscriptions']" routerLinkActive="active"><i
+                    class="ri-team-line"></i>Subscriptions</a>
             <hr>
             <a class="sb-items"><i class="ri-user-line"></i> You</a>
             <a class="sb-items"><i class="ri-chat-history-line"></i> History</a>
@@ -33,6 +34,8 @@
 
 
     </div>
+
+    <!-- sidebar End -->
 
     <div class="chip">
 
@@ -67,16 +70,14 @@
             </div>
 
         </div>
-        <!-- SidebarENd-->
 
 
-
+        <!-- displaying Feed videos -->
 
         <app-videos></app-videos>
 
 
-
-
     </div>
+
 
 </div>
